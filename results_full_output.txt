@@ -1,0 +1,110 @@
+===================================================================================
+ Hybrid Threshold Fit (HTF) - comparative evaluation
+ Heap 1048576 bytes | header 24 B + footer 8 B per block | alignment 8 B
+ Heap invariants are validated after EVERY allocation and free.
+===================================================================================
+
+W1 Burst (small, short-lived)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+First Fit             3144 B       0.019     109.52        236         0       0 B
+Best Fit              2741 B       0.022     164.59        226         0       0 B
+Worst Fit              793 B       0.573     296.83        319         0       0 B
+Next Fit               793 B       0.570       2.00          2         0       0 B
+Buddy                 5140 B       0.500       0.14         30         0       0 B
+HTF T=256             2559 B       0.000       5.49        300         0   22208 B
+
+W2 Accumulation (large, long)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+First Fit              359 B       0.332      45.00         96         0       0 B
+Best Fit               456 B       0.328      87.18         97         0       0 B
+Worst Fit              260 B       0.955      88.73         99         0       0 B
+Next Fit               260 B       0.898       2.04          5         0       0 B
+Buddy               124542 B       0.498       0.24         14         0       0 B
+HTF T=256              456 B       0.328      87.18         97         0       0 B
+
+W3 Bimodal (realistic mix)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+First Fit             2135 B       0.308      83.91        203         0       0 B
+Best Fit              1963 B       0.321     145.25        188         0       0 B
+Worst Fit              622 B       0.951     222.03        241         0       0 B
+Next Fit               622 B       0.919       2.01          8         0       0 B
+Buddy               131248 B       0.496       0.18         16         0       0 B
+HTF T=256             1799 B       0.329      40.52        277         0   15320 B
+
+W4 Adversarial (worst case)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+First Fit                0 B       0.818     620.35       1221        20       0 B
+Best Fit                 0 B       0.818     620.35       1221        20       0 B
+Worst Fit                0 B       0.818     620.35       1221        20       0 B
+Next Fit                 0 B       0.818      21.66       1221        20       0 B
+Buddy                    0 B       0.846       2.07         28        19       0 B
+HTF T=256                0 B       0.316     620.35       1221        20   38400 B
+
+Threshold tuning - W1 Burst (small, short-lived)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+HTF T=32              2736 B       0.017     164.04        267         0    2192 B
+HTF T=64              2472 B       0.011     123.22        290         0    7008 B
+HTF T=128             2559 B       0.000       5.49        300         0   22208 B
+HTF T=256             2559 B       0.000       5.49        300         0   22208 B
+HTF T=512             2559 B       0.000       5.49        300         0   22208 B
+HTF T=1024            2559 B       0.000       5.49        300         0   22208 B
+
+Threshold tuning - W2 Accumulation (large, long)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+HTF T=32               456 B       0.328      87.18         97         0       0 B
+HTF T=64               456 B       0.328      87.18         97         0       0 B
+HTF T=128              456 B       0.328      87.18         97         0       0 B
+HTF T=256              456 B       0.328      87.18         97         0       0 B
+HTF T=512              456 B       0.328      87.18         97         0       0 B
+HTF T=1024             456 B       0.328      87.18         97         0       0 B
+
+Threshold tuning - W3 Bimodal (realistic mix)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+HTF T=32              1762 B       0.314     144.25        223         0    1272 B
+HTF T=64              1478 B       0.349     121.18        252         0    4496 B
+HTF T=128             1799 B       0.329      40.52        277         0   15320 B
+HTF T=256             1799 B       0.329      40.52        277         0   15320 B
+HTF T=512             1799 B       0.329      40.52        277         0   15320 B
+HTF T=1024            1799 B       0.329      40.52        277         0   15320 B
+
+Threshold tuning - W4 Adversarial (worst case)
+Policy         InternalFrag ExternalFrag   AvgSteps   MaxSteps  Failures  Reserved
+---------------------------------------------------------------------------------
+HTF T=32                 0 B       0.818     620.35       1221        20       0 B
+HTF T=64                 0 B       0.316     620.35       1221        20   38400 B
+HTF T=128                0 B       0.316     620.35       1221        20   38400 B
+HTF T=256                0 B       0.316     620.35       1221        20   38400 B
+HTF T=512                0 B       0.316     620.35       1221        20   38400 B
+HTF T=1024               0 B       0.316     620.35       1221        20   38400 B
+
+Real programs running on the allocator
+Policy         Program                InternalFrag   AvgSteps   MaxSteps    Result
+---------------------------------------------------------------------------------
+First Fit      R1 linked list                   0 B    3000.83       6000 153399585
+First Fit      R2 text processing           17207 B    2001.50       4002     38405
+First Fit      R3 matrix multiply               0 B     122.00        243      6320
+Best Fit       R1 linked list                   0 B    3375.58       6000 153399585
+Best Fit       R2 text processing           17207 B    2001.50       4002     38405
+Best Fit       R3 matrix multiply               0 B     122.00        243      6320
+Worst Fit      R1 linked list                   0 B    4000.17       7499 153399585
+Worst Fit      R2 text processing           17207 B    2001.50       4002     38405
+Worst Fit      R3 matrix multiply               0 B     122.00        243      6320
+Next Fit       R1 linked list                   0 B       2.00          2 153399585
+Next Fit       R2 text processing           17207 B       2.00          2     38405
+Next Fit       R3 matrix multiply               0 B       2.00          2      6320
+Buddy          R1 linked list               48000 B       1.67         30 153399585
+Buddy          R2 text processing           66711 B       2.00         24     38405
+Buddy          R3 matrix multiply           93312 B       2.03         20      6320
+HTF            R1 linked list                   0 B    2000.67       6000 153399585
+HTF            R2 text processing           17207 B    2001.50       4002     38405
+HTF            R3 matrix multiply               0 B     122.00        243      6320
+
+All heap invariants held throughout every run.
+Wrote results.csv

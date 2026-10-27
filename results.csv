@@ -1,0 +1,49 @@
+workload,policy,T,internal_frag,external_frag,avg_steps,max_steps,failures,bin_reserved,validator_runs
+W1 Burst (small, short-lived),First Fit,0,3144,0.018628,109.5177,236,0,0,20000
+W1 Burst (small, short-lived),Best Fit,0,2741,0.021795,164.5947,226,0,0,20000
+W1 Burst (small, short-lived),Worst Fit,0,793,0.572849,296.8261,319,0,0,20000
+W1 Burst (small, short-lived),Next Fit,0,793,0.569643,1.9953,2,0,0,20000
+W1 Burst (small, short-lived),Buddy,0,5140,0.499985,0.1368,30,0,0,0
+W1 Burst (small, short-lived),HTF T=256,256,2559,0.000000,5.4850,300,0,22208,20000
+W2 Accumulation (large, long),First Fit,0,359,0.331568,45.0040,96,0,0,4000
+W2 Accumulation (large, long),Best Fit,0,456,0.327617,87.1795,97,0,0,4000
+W2 Accumulation (large, long),Worst Fit,0,260,0.954571,88.7285,99,0,0,4000
+W2 Accumulation (large, long),Next Fit,0,260,0.898145,2.0445,5,0,0,4000
+W2 Accumulation (large, long),Buddy,0,124542,0.498039,0.2410,14,0,0,0
+W2 Accumulation (large, long),HTF T=256,256,456,0.327617,87.1795,97,0,0,4000
+W3 Bimodal (realistic mix),First Fit,0,2135,0.308375,83.9069,203,0,0,16000
+W3 Bimodal (realistic mix),Best Fit,0,1963,0.320539,145.2469,188,0,0,16000
+W3 Bimodal (realistic mix),Worst Fit,0,622,0.951143,222.0266,241,0,0,16000
+W3 Bimodal (realistic mix),Next Fit,0,622,0.919140,2.0122,8,0,0,16000
+W3 Bimodal (realistic mix),Buddy,0,131248,0.496063,0.1792,16,0,0,0
+W3 Bimodal (realistic mix),HTF T=256,256,1799,0.328588,40.5153,277,0,15320,16000
+W4 Adversarial (worst case),First Fit,0,0,0.817996,620.3468,1221,20,0,2440
+W4 Adversarial (worst case),Best Fit,0,0,0.817996,620.3468,1221,20,0,2440
+W4 Adversarial (worst case),Worst Fit,0,0,0.817996,620.3468,1221,20,0,2440
+W4 Adversarial (worst case),Next Fit,0,0,0.817996,21.6605,1221,20,0,2440
+W4 Adversarial (worst case),Buddy,0,0,0.846154,2.0661,28,19,0,0
+W4 Adversarial (worst case),HTF T=256,256,0,0.315595,620.3468,1221,20,38400,2440
+W1 Burst (small, short-lived),HTF T=32,32,2736,0.016977,164.0383,267,0,2192,20000
+W1 Burst (small, short-lived),HTF T=64,64,2472,0.010720,123.2206,290,0,7008,20000
+W1 Burst (small, short-lived),HTF T=128,128,2559,0.000000,5.4850,300,0,22208,20000
+W1 Burst (small, short-lived),HTF T=256,256,2559,0.000000,5.4850,300,0,22208,20000
+W1 Burst (small, short-lived),HTF T=512,512,2559,0.000000,5.4850,300,0,22208,20000
+W1 Burst (small, short-lived),HTF T=1024,1024,2559,0.000000,5.4850,300,0,22208,20000
+W2 Accumulation (large, long),HTF T=32,32,456,0.327617,87.1795,97,0,0,4000
+W2 Accumulation (large, long),HTF T=64,64,456,0.327617,87.1795,97,0,0,4000
+W2 Accumulation (large, long),HTF T=128,128,456,0.327617,87.1795,97,0,0,4000
+W2 Accumulation (large, long),HTF T=256,256,456,0.327617,87.1795,97,0,0,4000
+W2 Accumulation (large, long),HTF T=512,512,456,0.327617,87.1795,97,0,0,4000
+W2 Accumulation (large, long),HTF T=1024,1024,456,0.327617,87.1795,97,0,0,4000
+W3 Bimodal (realistic mix),HTF T=32,32,1762,0.314264,144.2454,223,0,1272,16000
+W3 Bimodal (realistic mix),HTF T=64,64,1478,0.349131,121.1775,252,0,4496,16000
+W3 Bimodal (realistic mix),HTF T=128,128,1799,0.328588,40.5153,277,0,15320,16000
+W3 Bimodal (realistic mix),HTF T=256,256,1799,0.328588,40.5153,277,0,15320,16000
+W3 Bimodal (realistic mix),HTF T=512,512,1799,0.328588,40.5153,277,0,15320,16000
+W3 Bimodal (realistic mix),HTF T=1024,1024,1799,0.328588,40.5153,277,0,15320,16000
+W4 Adversarial (worst case),HTF T=32,32,0,0.817996,620.3468,1221,20,0,2440
+W4 Adversarial (worst case),HTF T=64,64,0,0.315595,620.3468,1221,20,38400,2440
+W4 Adversarial (worst case),HTF T=128,128,0,0.315595,620.3468,1221,20,38400,2440
+W4 Adversarial (worst case),HTF T=256,256,0,0.315595,620.3468,1221,20,38400,2440
+W4 Adversarial (worst case),HTF T=512,512,0,0.315595,620.3468,1221,20,38400,2440
+W4 Adversarial (worst case),HTF T=1024,1024,0,0.315595,620.3468,1221,20,38400,2440

@@ -1,0 +1,11 @@
+# compiled output
+htf
+htf.exe
+*.o
+*.obj
+
+# editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
